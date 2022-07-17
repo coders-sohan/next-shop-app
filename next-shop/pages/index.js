@@ -1,3 +1,4 @@
+import NextLink from "next/link";
 import Layout from "../components/Layout";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
@@ -21,18 +22,20 @@ export default function Home() {
 						{data.products.map((product) => (
 							<Grid item md={4} key={product.name}>
 								<Card>
-									<CardActionArea>
-										<CardMedia
-											component="img"
-											image={product.image}
-											title={product.name}
-										/>
-										<CardContent>
-											<Typography variant="h6" color="initial">
-												{product.name}
-											</Typography>
-										</CardContent>
-									</CardActionArea>
+									<NextLink href={`/product/${product.slug}`} passHref>
+										<CardActionArea>
+											<CardMedia
+												component="img"
+												image={product.image}
+												title={product.name}
+											/>
+											<CardContent>
+												<Typography variant="h6" color="initial">
+													{product.name}
+												</Typography>
+											</CardContent>
+										</CardActionArea>
+									</NextLink>
 									<CardActions>
 										<Typography variant="p" color="initial">
 											${product.price}
